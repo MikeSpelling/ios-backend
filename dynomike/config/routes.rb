@@ -1,4 +1,11 @@
 Rails.application.routes.draw do
+  root 'admin#index'
+
+  get 'admin/index'
+
+  resources :comments
+  delete "comments" => "comments#delete_all"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

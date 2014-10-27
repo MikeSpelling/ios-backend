@@ -1,0 +1,24 @@
+<h1>View of current database</h1>
+
+<ul>
+  <li><%= link_to 'New comment', new_comment_path %> </li>
+</ul>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Text</th>
+  </tr>
+
+  <% @comments.each do |comment| %>
+      <tr>
+        <td><%= comment.title %></td>
+        <td><%= comment.text %></td>
+        <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
+        <td><%= link_to 'Delete', comment_path(comment), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+
+<%= link_to 'Delete All', comments_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+
