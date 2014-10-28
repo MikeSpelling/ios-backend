@@ -6,6 +6,9 @@ Rails.application.routes.draw do
   resources :comments
   delete "comments" => "comments#delete_all"
 
+  get "api" => "api#index"
+  post "api" => "api#create"
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
