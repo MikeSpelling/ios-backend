@@ -8,9 +8,17 @@ class ApiController < ApplicationController
   end
 
   def create
-    @comment = Comment.new(comment_params)
-    @comment.save
-    render :nothing => true, :status => 200, :content_type => 'text/html'
+    begin
+      @comment = Comment.new(comment_params)
+      if @comment.save
+        render :nothing => true, :status => 200
+      else
+        render :nothing => true, status: :unprocessable_entity
+      end
+
+    rescue Exception
+      render :nothing => true, status: :bad_request
+    end
   end
 
   def comment_params
