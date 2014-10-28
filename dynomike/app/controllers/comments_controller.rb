@@ -1,5 +1,7 @@
 class CommentsController < ApplicationController
 
+  http_basic_authenticate_with name: ENV["dynomike_username"], password: ENV["dynomike_password"]
+
   def index
     @comments = Comment.all
   end
